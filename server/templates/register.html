@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h3>Register</h3>
+<form method="POST">
+  <input name="username" placeholder="Username" required />
+  <input name="password" type="password" placeholder="Password" required />
+
+  <input name="mt5_login" placeholder="MT5 Login" required />
+  <input name="mt5_password" placeholder="MT5 Password" required />
+  <input name="mt5_server" placeholder="Server" required />
+
+  <button>Register</button>
+</form>
+{% endblock %}

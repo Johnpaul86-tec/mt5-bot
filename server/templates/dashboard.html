@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block content %}
+   <div class="controls">
+       <h2>Balance: {{ balance }}</h2>
+       <h3>Bot Status: {{ "Running" if user.bot_running else "Stopped" }}</h3>
+        <a href="/start_bot">Start</a>
+        <a href="/stop_bot">Stop</a>
+        <a href="/profile">Profile</a>
+   </div>
+
+   <div class="perfomance">
+       <h3>Performance</h3>
+       <p>Wins: {{ wins }}</p>
+       <p>Losses: {{ losses }}</p>
+   </div>
+
+    <h3>Trade Journal</h3>
+    <table>
+      <tr>
+        <th>Symbol</th>
+        <th>Action</th>
+        <th>Result</th>
+      </tr>
+
+      {% for t in trades %}
+      <tr>
+        <td>{{ t.symbol }}</td>
+        <td>{{ t.action }}</td>
+        <td>{{ t.result }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <canvas id="chart"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('chart');
+
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ['Wins', 'Losses'],
+              datasets: [{
+                  label: 'Performance',
+                  data: [{{ wins }}, {{ losses }}]
+              }]
+          }
+      });
+    </script>
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Profile - Set MT5 Credentials</h1>
+    <form method="POST">
+      <label>MT5 Login:</label><br />
+      <input
+        type="text"
+        name="mt5_login"
+        value="{{ user.mt5_login or '' }}"
+        required
+      /><br /><br />
+
+      <label>MT5 Password:</label><br />
+      <input
+        type="password"
+        name="mt5_password"
+        value="{{ user.mt5_password or '' }}"
+        required
+      /><br /><br />
+
+      <label>MT5 Server:</label><br />
+      <input
+        type="text"
+        name="mt5_server"
+        value="{{ user.mt5_server or '' }}"
+        required
+      /><br /><br />
+
+      <button type="submit">Save</button>
+    </form>
+    <br />
+    <a href="/dashboard">Back to Dashboard</a>
+  </body>
+</html>
